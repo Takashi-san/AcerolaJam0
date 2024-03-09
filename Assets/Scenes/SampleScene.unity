@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 1653424600}
   - component: {fileID: 1653424601}
   m_Layer: 0
-  m_Name: GameStateManager
+  m_Name: GamePlayManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -668,7 +668,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnArea: {fileID: 553468492}
   _character: {fileID: 7633117743130046410, guid: dc1988f5fceb3d44b9abbbdce075cc84, type: 3}
-  _alienCount: 2
+  _stageData: {fileID: 11400000, guid: c2b819350a2ca9e4e9ad3fee3ed4ec8f, type: 2}
   _alienColor: {r: 1, g: 0, b: 0, a: 1}
-  _commonerCount: 10
   _commonerColor: {r: 0, g: 0, b: 1, a: 1}

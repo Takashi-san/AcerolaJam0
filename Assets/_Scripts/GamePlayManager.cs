@@ -12,11 +12,8 @@ public class GamePlayManager : MonoBehaviour
 
     [SerializeField] BoundSpawner _spawnArea;
     [SerializeField] Minion _character;
-
-    [SerializeField] int _alienCount = 0;
+    [SerializeField] StageData _stageData;
     [SerializeField] Color _alienColor = Color.red;
-
-    [SerializeField] int _commonerCount = 0;
     [SerializeField] Color _commonerColor = Color.blue;
 
     enum GameState
@@ -64,7 +61,7 @@ public class GamePlayManager : MonoBehaviour
         _state = GameState.Setup;
         // TODO: fazer tudo de forma assíncrona.
 
-        var aliens = _spawnArea.Spawn(_character, _alienCount);
+        var aliens = _spawnArea.Spawn(_character, _stageData.EnemyCount);
         foreach (var alien in aliens)
         {
             alien.GamePlayManager = this;
@@ -72,7 +69,7 @@ public class GamePlayManager : MonoBehaviour
             alien.Type = MinionType.Enemy;
         }
 
-        var commoners = _spawnArea.Spawn(_character, _commonerCount);
+        var commoners = _spawnArea.Spawn(_character, _stageData.CommonerCount);
         foreach (var commoner in commoners)
         {
             commoner.GamePlayManager = this;
