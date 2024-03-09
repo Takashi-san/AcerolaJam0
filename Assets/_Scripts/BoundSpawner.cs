@@ -1,21 +1,23 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CrowdSpawner : MonoBehaviour
+public class BoundSpawner : MonoBehaviour
 {
-    public GameObject prefab;
-    public int quantity;
     public Bounds bound;
 
-    private void Start()
+    public List<T> Spawn<T>(T item, int count) where T : Object
     {
-        for (int i = 0; i < quantity; i++)
+        List<T> list = new List<T>();
+        for (int i = 0; i < count; i++)
         {
             float x = Random.Range(bound.min.x, bound.max.x);
             float y = Random.Range(bound.min.y, bound.max.y);
             Vector3 position = new(x, y, 0);
             Debug.Log($"prefab {i} position: {position}");
-            Instantiate(prefab, position, Quaternion.identity, transform);
+            T instantiated = Instantiate(item, position, Quaternion.identity, transform);
+            list.Add(instantiated);
         }
+        return list;
     }
 
     private void OnDrawGizmos()
