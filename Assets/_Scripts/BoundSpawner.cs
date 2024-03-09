@@ -13,7 +13,6 @@ public class BoundSpawner : MonoBehaviour
             float x = Random.Range(bound.min.x, bound.max.x);
             float y = Random.Range(bound.min.y, bound.max.y);
             Vector3 position = new(x, y, 0);
-            Debug.Log($"prefab {i} position: {position}");
             T instantiated = Instantiate(item, position, Quaternion.identity, transform);
             list.Add(instantiated);
         }

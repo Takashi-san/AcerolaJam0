@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnArea: {fileID: 553468492}
-  _character: {fileID: 7665794769754980598, guid: dc1988f5fceb3d44b9abbbdce075cc84, type: 3}
+  _character: {fileID: 7633117743130046410, guid: dc1988f5fceb3d44b9abbbdce075cc84, type: 3}
   _alienCount: 2
   _alienColor: {r: 1, g: 0, b: 0, a: 1}
   _commonerCount: 10

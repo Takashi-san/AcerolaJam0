@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -10,7 +11,7 @@ public class GamePlayManager : MonoBehaviour
     GameState _pausedState = GameState.None;
 
     [SerializeField] BoundSpawner _spawnArea;
-    [SerializeField] SpriteRenderer _character;
+    [SerializeField] Minion _character;
 
     [SerializeField] int _alienCount = 0;
     [SerializeField] Color _alienColor = Color.red;
@@ -47,6 +48,11 @@ public class GamePlayManager : MonoBehaviour
         }
     }
 
+    public bool KillMinion(Minion minion)
+    {
+        return _state == GameState.Playing;
+    }
+
     private void Start()
     {
         Setup();
@@ -61,13 +67,17 @@ public class GamePlayManager : MonoBehaviour
         var aliens = _spawnArea.Spawn(_character, _alienCount);
         foreach (var alien in aliens)
         {
-            alien.color = _alienColor;
+            alien.GamePlayManager = this;
+            alien.Visual.color = _alienColor;
+            alien.Type = MinionType.Enemy;
         }
 
         var commoners = _spawnArea.Spawn(_character, _commonerCount);
         foreach (var commoner in commoners)
         {
-            commoner.color = _commonerColor;
+            commoner.GamePlayManager = this;
+            commoner.Visual.color = _commonerColor;
+            commoner.Type = MinionType.Commoner;
         }
     }
 }
