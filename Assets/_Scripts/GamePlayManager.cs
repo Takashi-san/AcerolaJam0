@@ -10,6 +10,8 @@ public class GamePlayManager : MonoBehaviour
     GameState _state = GameState.None;
     GameState _pausedState = GameState.None;
 
+    [SerializeField] PlayerInput _input;
+
     [SerializeField] BoundSpawner _spawnArea;
     [SerializeField] Minion _character;
     [SerializeField] StageData _stageData;
@@ -52,6 +54,7 @@ public class GamePlayManager : MonoBehaviour
 
     private void Start()
     {
+        _input.OnPressEsc += TogglePause;
         Setup();
         _state = GameState.Playing;
     }
