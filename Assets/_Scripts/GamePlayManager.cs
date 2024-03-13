@@ -52,6 +52,11 @@ public class GamePlayManager : MonoBehaviour
         return _state == GameState.Playing;
     }
 
+    public bool CanMoveCamera()
+    {
+        return _state == GameState.Playing;
+    }
+
     private void Start()
     {
         _input.OnPressEsc += TogglePause;

@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public Action OnPressEsc;
+    public Action<Vector3> MousePosition;
+
+    [SerializeField] Camera _camera;
 
     void Update()
     {
@@ -13,5 +16,7 @@ public class PlayerInput : MonoBehaviour
         {
             OnPressEsc();
         }
+
+        MousePosition(_camera.ScreenToWorldPoint(Input.mousePosition));
     }
 }
